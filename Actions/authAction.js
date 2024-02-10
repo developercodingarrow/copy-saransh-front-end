@@ -1,6 +1,7 @@
 import { performAPIAction } from "./performAPIAction";
 import Cookies from "js-cookie";
 import CryptoJS from "crypto-js";
+import { API } from "../config";
 
 // Define the encryption key and data to be encrypted
 const encryptionKey = "my-secret-key";
@@ -72,38 +73,35 @@ export const isAuth = () => {
 
 // API FOR LOGIN ACCOUNT
 export const loginAccount = async (requestData, token) => {
-  const url = `http://localhost:8000/api/v1/saranshrealtorsindia/user/login`;
+  const url = `${API}/user/login`;
   const method = "post";
   return performAPIAction(method, url, requestData);
 };
 
 // API for CREATE NEW USER
 export const createNewUser = async (requestData) => {
-  const url = "http://localhost:8000/api/v1/saranshrealtorsindia/user/sing-up";
+  const url = `${API}/user/sing-up`;
   const method = "post";
   return performAPIAction(method, url, requestData);
 };
 
-
-
 // API FOR OTP VERIFICATION
 export const verifyOtp = async (requestData, verifyToken) => {
-  const url = `http://localhost:8000/api/v1/saranshrealtorsindia/user/verify-otp/${verifyToken}`;
+  const url = `${API}/user/verify-otp/${verifyToken}`;
   const method = "post";
   return performAPIAction(method, url, requestData);
 };
 
 // API FOR forgotePasswordURL TO SEND EMAIL
 export const forgotePasswordURL = async (requestData) => {
-  const url =
-    "http://localhost:8000/api/v1/saranshrealtorsindia/user/forgot-password";
+  const url = `${API}/user/forgot-password`;
   const method = "post";
   return performAPIAction(method, url, requestData);
 };
 
 // API FOR OTP RESETPASSWORD
 export const resetPassword = async (requestData, verifyToken) => {
-  const url = `http://localhost:8000/api/v1/saranshrealtorsindia/user/reset-password/${verifyToken}`;
+  const url = `${API}/user/reset-password/${verifyToken}`;
   const method = "post";
   return performAPIAction(method, url, requestData);
 };
